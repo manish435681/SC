@@ -1,4 +1,26 @@
 let goToSlide;
+const deck = document.getElementById('deck');
+
+if (deck) {
+    document.addEventListener('wheel', (e) => {
+        const target = e.target;
+        if (!(target instanceof Element) || !deck.contains(target)
+            || target.closest('#mod-prompt-overlay, #lightbox') || e.ctrlKey) return;
+
+        const activeSlide = deck.querySelector('.slide.active');
+        if (!activeSlide) return;
+
+        let deltaY = e.deltaY;
+        if (e.deltaMode === WheelEvent.DOM_DELTA_LINE) {
+            deltaY *= parseFloat(getComputedStyle(activeSlide).lineHeight) || 16;
+        } else if (e.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+            deltaY *= activeSlide.clientHeight;
+        }
+
+        e.preventDefault();
+        activeSlide.scrollTop += deltaY;
+    }, { passive: false, capture: true });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Change to 'let' so we can update them after filtering
@@ -245,9 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const deck = document.getElementById('deck');
     let touchstartX = 0;
     let touchstartY = 0;
+    let touchPreviousY = 0;
     let touchendX = 0;
     let touchendY = 0;
     const swipeThreshold = 50; 
@@ -257,7 +279,22 @@ document.addEventListener('DOMContentLoaded', () => {
     deck.addEventListener('touchstart', (e) => {
         touchstartX = e.changedTouches[0].screenX;
         touchstartY = e.changedTouches[0].screenY;
+        touchPreviousY = touchstartY;
     }, { passive: true });
+
+    deck.addEventListener('touchmove', (e) => {
+        const touch = e.changedTouches[0];
+        const totalDeltaX = touch.screenX - touchstartX;
+        const totalDeltaY = touch.screenY - touchstartY;
+        const activeSlide = deck.querySelector('.slide.active');
+
+        if (activeSlide && Math.abs(totalDeltaY) > Math.abs(totalDeltaX)) {
+            e.preventDefault();
+            activeSlide.scrollTop -= touch.screenY - touchPreviousY;
+        }
+
+        touchPreviousY = touch.screenY;
+    }, { passive: false, capture: true });
 
     deck.addEventListener('touchend', (e) => {
         touchendX = e.changedTouches[0].screenX;
