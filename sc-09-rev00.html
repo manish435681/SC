@@ -1,64 +1,109 @@
-<!-- Slide 2 — Concordance Table (Changes to Rev-01) -->
+<!-- Slide 2 — Concordance Table (MRGR Style) -->
 <section class="slide" data-index="1" data-title="Concordance Table">
-  <div class="frame scrollable-frame" style="max-width: 1150px;">
-    <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px;">SC-09 Concordance Table: Updates to Rev-01</h2>
+  <div class="frame scrollable-frame" style="max-width: 1250px;">
+    <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px;">Concordance Table for SC-09 Update</h2>
     
     <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden;">
-      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 16px;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; line-height: 1.6;">
         <thead>
           <tr style="background-color: #ebf8ff; color: #2c5282; border-bottom: 2px solid #bee3f8;">
-            <th style="padding: 15px; width: 20%;">Section / Topic</th>
-            <th style="padding: 15px; width: 40%;">SC-09 (Rev-00) [Old Text]</th>
-            <th style="padding: 15px; width: 40%;">SC-09 (Rev-01) [New Text & Changes]</th>
+            <th style="padding: 12px; width: 10%; border-right: 1px solid #e2e8f0;">Para No.</th>
+            <th style="padding: 12px; width: 35%; border-right: 1px solid #e2e8f0;">SC-09 (Rev-00)</th>
+            <th style="padding: 12px; width: 35%; border-right: 1px solid #e2e8f0;">SC-09 (Rev-01)</th>
+            <th style="padding: 12px; width: 20%;">Remarks</th>
           </tr>
         </thead>
         <tbody style="color: #4a5568;">
           
-          <!-- Row 1: Terminology -->
+          <!-- Row 1 -->
           <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 15px; font-weight: bold; color: #2d3748;">Terminology</td>
-            <td style="padding: 15px;">Procedure Order for Axle Counter Soft Reset</td>
-            <td style="padding: 15px;">Procedure Order for Axle Counter <del style="color: #e53e3e; text-decoration-thickness: 2px;">Soft</del> Reset</td>
-          </tr>
-
-          <!-- Row 2: System Behavior -->
-          <tr style="border-bottom: 1px solid #e2e8f0; background-color: #f7fafc;">
-            <td style="padding: 15px; font-weight: bold; color: #2d3748;">System Behavior After Reset</td>
-            <td style="padding: 15px;">System will reset count on the evaluator but the state of the section will remain occupied until a valid check-in/check-out is completed.</td>
-            <td style="padding: 15px;">
-              <ins style="color: #276749; text-decoration: none; font-weight: bold;">When Axle Counter reset is issued, the Axle Counter</ins> system will reset count on the evaluator 
-              <del style="color: #e53e3e; text-decoration-thickness: 2px;">but the state of the section will remain occupied until a valid check-in/check-out is completed.</del> 
-              <ins style="color: #276749; text-decoration: none; font-weight: bold;">to make the particular track section clear from occupied status.</ins>
+            <td style="padding: 12px; font-weight: bold; border-right: 1px solid #e2e8f0;">1.0 & 3.0</td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              Requirement of Axle Counter <del style="color: #e53e3e;">Soft</del> Reset...<br><br>
+              When Axle Counter <del style="color: #e53e3e;">soft</del> reset is issued...[cite: 9]
             </td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              Requirement of Axle Counter Reset...<br><br>
+              When Axle Counter reset is issued...[cite: 1]
+            </td>
+            <td style="padding: 12px;">The word "soft" removed from terminology.</td>
           </tr>
 
-          <!-- Row 3: Train Sweep -->
+          <!-- Row 2 -->
+          <tr style="border-bottom: 1px solid #e2e8f0; background-color: #f7fafc;">
+            <td style="padding: 12px; font-weight: bold; border-right: 1px solid #e2e8f0;">3.0</td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              <del style="color: #e53e3e;">...the state of the section will remain occupied until a valid check-in/check-out has been completed. The valid check-in/check-out will require a train sweep through the fault section and can be done in RM with any train type...</del>[cite: 9]
+            </td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              ...system will reset count on the evaluator to make the particular track section clear from occupied status.<br><br>
+              Axle counter cold start-Whenever Axle counter Evaluation Board (AEB) card restarts, it shows occupied status and this state is maintained until reset is done.[cite: 1]
+            </td>
+            <td style="padding: 12px;">Immediate clearance after reset; train sweep requirement eliminated. Cold start behavior clarified.</td>
+          </tr>
+
+          <!-- Row 3 -->
           <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 15px; font-weight: bold; color: #2d3748;">Train Sweep Requirement</td>
-            <td style="padding: 15px;">Valid check-in/check-out requires a train sweep through the fault section (can be done in RM with any train type).</td>
-            <td style="padding: 15px;">
-              <del style="color: #e53e3e; text-decoration-thickness: 2px;">Valid check-in/check-out requires a train sweep through the fault section (can be done in RM with any train type).</del><br><br>
-              <ins style="color: #276749; text-decoration: none; font-weight: bold;">[Entire requirement deleted in Rev-01]</ins>
+            <td style="padding: 12px; font-weight: bold; border-right: 1px solid #e2e8f0;">4.0</td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              <del style="color: #e53e3e;">4.1 Axle counters (AX) are part of secondary train detection system, failure in axle counter section does not cause a failure in primary train detection systems (CBTC radio)...<br><br>
+              4.2 As the Green aspect of the concerned route of failed axle counter section will not be available, Non-CBTC train has to proceed as per procedure.</del>[cite: 9]
             </td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              (i) Stations with points & crossings: Failure of first track section after physical signal will lead to the replacement of signal aspect to red... Replacement of the origin signal to red will not allow even the CBTC train to enter...<br><br>
+              (ii) Stations without points & crossings: Failure of first track section after virtual signal will not affect the CBTC train movement.[cite: 1]
+            </td>
+            <td style="padding: 12px;">Impact on CBTC trains comprehensively clarified based on the presence of points and crossings.</td>
           </tr>
 
-          <!-- Row 4: Station Hold -->
+          <!-- Row 4 -->
           <tr style="border-bottom: 1px solid #e2e8f0; background-color: #f7fafc;">
-            <td style="padding: 15px; font-weight: bold; color: #2d3748;">Station Hold Protocol</td>
-            <td style="padding: 15px;">STEP 2: STATION HOLD. TC/SC shall place station hold for train running in ATO/ATP in station preceding failure.</td>
-            <td style="padding: 15px;">
-              <del style="color: #e53e3e; text-decoration-thickness: 2px;">STEP 2: STATION HOLD. TC/SC shall place station hold for train running in ATO/ATP in station preceding failure.</del><br><br>
-              <ins style="color: #276749; text-decoration: none; font-weight: bold;">[Step completely removed in Rev-01]</ins>
+            <td style="padding: 12px; font-weight: bold; border-right: 1px solid #e2e8f0;">5.0 (ii)</td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              <del style="color: #e53e3e;">(ii) TC/SC shall place station hold for train running in ATO/ATP in station preceding failure. Train running in degraded mode shall be stopped as per extant procedure.</del>[cite: 9]
             </td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              <strong>[Clause Deleted]</strong>[cite: 1, 2]
+            </td>
+            <td style="padding: 12px;">Station Hold step completely removed.</td>
           </tr>
 
-          <!-- Row 5: Vacancy Confirmation -->
-          <tr>
-            <td style="padding: 15px; font-weight: bold; color: #2d3748;">Vacancy Confirmation</td>
-            <td style="padding: 15px;">In case of any ambiguity regarding vacancy... TC shall ask Station Controller to verify it physically.</td>
-            <td style="padding: 15px;">
-              <ins style="color: #276749; text-decoration: none; font-weight: bold;">Traffic controller shall ensure vacancy of failed track section by confirming line of sight clear from TO of the following train and/or TO of train operating on adjacent line. If TO's information is not sufficient,</ins> TC may ask <del style="color: #e53e3e; text-decoration-thickness: 2px;">Station Controller</del> <ins style="color: #276749; text-decoration: none; font-weight: bold;">SC's of stations located on both sides</ins> to verify it physically.
+          <!-- Row 5 -->
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px; font-weight: bold; border-right: 1px solid #e2e8f0;">5.0 (iii)</td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              <del style="color: #e53e3e;">[Not Present in Rev-00]</del>[cite: 9]
             </td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              (iii) Traffic controller shall ensure vacancy of failed track section by confirming line of sight clear from TO of the following train and/or TO of train operating on adjacent line. If TO's information is not sufficient TC may ask SC's of stations located on both sides...[cite: 2]
+            </td>
+            <td style="padding: 12px;">Added explicit step to check line of sight via Train Operators before initiating physical verification.</td>
+          </tr>
+
+          <!-- Row 6 -->
+          <tr style="border-bottom: 1px solid #e2e8f0; background-color: #f7fafc;">
+            <td style="padding: 12px; font-weight: bold; border-right: 1px solid #e2e8f0;">5.0 (vi)</td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              <del style="color: #e53e3e;">(vi) After giving Axle Counter soft reset command, a train running through (sweep in RM) the fault section is required in order to clear occupancy of the section. TC shall instruct TO of the train required for sweeping the section, to change the mode in RM...</del>[cite: 9]
+            </td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              (vi) Axle counter reset operation shall be done cautiously by TC/SC after verification as given in para 5.0 (i) to (vi) above as it enables resetting of axle counter without any verification/co-operation/piloting or out count.[cite: 2]
+            </td>
+            <td style="padding: 12px;">Train Sweep step completely removed and replaced with a caution note for the TC/SC.</td>
+          </tr>
+
+          <!-- Row 7 -->
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px; font-weight: bold; border-right: 1px solid #e2e8f0;">6.0</td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              <del style="color: #e53e3e;">[Not Present in Rev-00]</del>[cite: 9]
+            </td>
+            <td style="padding: 12px; border-right: 1px solid #e2e8f0;">
+              6.0 Method for resetting from ATS MMI:<br>
+              (i) Right click on the axle counter showing fault indication.<br>
+              (ii) From the Menu select Axle counter reset option...[cite: 2]
+            </td>
+            <td style="padding: 12px;">New section added detailing specific ATS MMI execution steps.</td>
           </tr>
 
         </tbody>
