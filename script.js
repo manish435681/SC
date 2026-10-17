@@ -394,30 +394,25 @@ document.addEventListener('click', function (event) {
 
 
 
-<!-- ========================================== -->
-<!-- JAVASCRIPT TOGGLE LOGIC                    -->
-<!-- ========================================== -->
+function toggleVersion() {
+  var v01 = document.getElementById("version-01");
+  var v00 = document.getElementById("version-00");
+  var btn = document.getElementById("versionToggleBtn");
 
-
-  function toggleVersion() {
-    var v01 = document.getElementById("version-01");
-    var v00 = document.getElementById("version-00");
-    var btn = document.getElementById("versionToggleBtn");
-
-    if (v01.style.display === "none") {
-      // Show New Version
-      v01.style.display = "block";
-      v00.style.display = "none";
-      btn.innerHTML = "Show Old Version (Rev-00)";
-      btn.style.backgroundColor = "#2b6cb0"; // Blue color
-    } else {
-      // Show Old Version
-      v01.style.display = "none";
-      v00.style.display = "block";
-      btn.innerHTML = "Show New Version (Rev-01)";
-      btn.style.backgroundColor = "#c53030"; // Red color to indicate old version
-    }
+  if (v01.style.display === "none") {
+    // Show New Version
+    v01.style.display = "block";
+    v00.style.display = "none";
+    btn.innerHTML = "Show Old Version (Rev-00)";
+    btn.style.backgroundColor = "#2b6cb0"; // Blue color
+  } else {
+    // Show Old Version
+    v01.style.display = "none";
+    v00.style.display = "block";
+    btn.innerHTML = "Show New Version (Rev-01)";
+    btn.style.backgroundColor = "#c53030"; // Red color to indicate old version
   }
+}
 
 
 
