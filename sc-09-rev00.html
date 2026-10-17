@@ -1,9 +1,9 @@
-<!-- Slide 2 — Concordance Table (MRGR Style with Sticky Header) -->
-<section class="slide" data-index="1" data-title="Concordance Table">
-  <div class="frame" style="max-width: 1250px; margin: 0 auto;">
+<!-- Slide 2 — Concordance Table (MRGR Style - Full Screen Height) -->
+<section class="slide" data-index="1" data-title="Concordance Table" style="height: 95vh; padding-top: 2vh;">
+  <div class="frame" style="max-width: 1250px; margin: 0 auto; display: flex; flex-direction: column; height: 100%;">
     
-    <!-- Title and Navigation Button Container -->
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px;">
+    <!-- Title and Navigation Button Container (Stays fixed at top) -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px; flex-shrink: 0;">
       <h2 style="color: #2b6cb0; margin: 0;">Concordance Table for SC-09 Update</h2>
       
       <!-- BUTTON TO RETURN TO NEW VERSION USING BROWSER HISTORY -->
@@ -12,12 +12,12 @@
       </a>
     </div>
     
-    <!-- Table Container with fixed height and vertical scrolling -->
-    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); max-height: 65vh; overflow-y: auto;">
+    <!-- Table Container (Stretches to fill the remaining screen height) -->
+    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-grow: 1; overflow-y: auto;">
       <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; line-height: 1.6; position: relative;">
         <thead>
           <tr style="color: #2c5282;">
-            <!-- position: sticky applied to headers to keep them at the top -->
+            <!-- position: sticky applied to headers to keep them visible while scrolling -->
             <th style="position: sticky; top: 0; background-color: #ebf8ff; z-index: 10; padding: 12px; width: 10%; border-right: 1px solid #e2e8f0; border-bottom: 2px solid #bee3f8;">Para No.</th>
             <th style="position: sticky; top: 0; background-color: #ebf8ff; z-index: 10; padding: 12px; width: 35%; border-right: 1px solid #e2e8f0; border-bottom: 2px solid #bee3f8;">SC-09 (Rev-00)</th>
             <th style="position: sticky; top: 0; background-color: #ebf8ff; z-index: 10; padding: 12px; width: 35%; border-right: 1px solid #e2e8f0; border-bottom: 2px solid #bee3f8;">SC-09 (Rev-01)</th>
