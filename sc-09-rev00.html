@@ -1,9 +1,9 @@
-<!-- Slide 2 — Concordance Table (MRGR Style) -->
+<!-- Slide 2 — Concordance Table (MRGR Style with Sticky Header) -->
 <section class="slide" data-index="1" data-title="Concordance Table">
-  <div class="frame scrollable-frame" style="max-width: 1250px;">
+  <div class="frame" style="max-width: 1250px; margin: 0 auto;">
     
     <!-- Title and Navigation Button Container -->
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px;">
       <h2 style="color: #2b6cb0; margin: 0;">Concordance Table for SC-09 Update</h2>
       
       <!-- BUTTON TO RETURN TO NEW VERSION USING BROWSER HISTORY -->
@@ -12,14 +12,16 @@
       </a>
     </div>
     
-    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden;">
-      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; line-height: 1.6;">
+    <!-- Table Container with fixed height and vertical scrolling -->
+    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); max-height: 65vh; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; line-height: 1.6; position: relative;">
         <thead>
-          <tr style="background-color: #ebf8ff; color: #2c5282; border-bottom: 2px solid #bee3f8;">
-            <th style="padding: 12px; width: 10%; border-right: 1px solid #e2e8f0;">Para No.</th>
-            <th style="padding: 12px; width: 35%; border-right: 1px solid #e2e8f0;">SC-09 (Rev-00)</th>
-            <th style="padding: 12px; width: 35%; border-right: 1px solid #e2e8f0;">SC-09 (Rev-01)</th>
-            <th style="padding: 12px; width: 20%;">Remarks</th>
+          <tr style="color: #2c5282;">
+            <!-- position: sticky applied to headers to keep them at the top -->
+            <th style="position: sticky; top: 0; background-color: #ebf8ff; z-index: 10; padding: 12px; width: 10%; border-right: 1px solid #e2e8f0; border-bottom: 2px solid #bee3f8;">Para No.</th>
+            <th style="position: sticky; top: 0; background-color: #ebf8ff; z-index: 10; padding: 12px; width: 35%; border-right: 1px solid #e2e8f0; border-bottom: 2px solid #bee3f8;">SC-09 (Rev-00)</th>
+            <th style="position: sticky; top: 0; background-color: #ebf8ff; z-index: 10; padding: 12px; width: 35%; border-right: 1px solid #e2e8f0; border-bottom: 2px solid #bee3f8;">SC-09 (Rev-01)</th>
+            <th style="position: sticky; top: 0; background-color: #ebf8ff; z-index: 10; padding: 12px; width: 20%; border-bottom: 2px solid #bee3f8;">Remarks</th>
           </tr>
         </thead>
         <tbody style="color: #4a5568;">
