@@ -393,33 +393,28 @@ document.addEventListener('click', function (event) {
 });
 
 
-<!-- ========================================== -->
-<!-- JAVASCRIPT TOGGLE LOGIC                    -->
-<!-- ========================================== -->
-function switchVersion(targetVersion) {
-  const v01Slides = document.querySelectorAll('.v01-slide');
-  const v00Slides = document.querySelectorAll('.v00-slide');
+//<!-- ========================================== -->
+//<!-- //JAVASCRIPT TOGGLE LOGIC  -->
+//<!-- ========================================== -->
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Check the URL for the requested version (e.g., yourfile.html?v=00)
+    const urlParams = new URLSearchParams(window.location.search);
+    const version = urlParams.get('v');
 
-  if (targetVersion === 'v00') {
-    // Hide New Version completely
-    v01Slides.forEach(function(slide) {
-      slide.style.display = 'none';
-    });
-    // Reveal Old Version
-    v00Slides.forEach(function(slide) {
-      slide.style.display = ''; // Removing the inline 'none' lets the presentation framework handle it
-    });
-  } else {
-    // Hide Old Version completely
-    v00Slides.forEach(function(slide) {
-      slide.style.display = 'none';
-    });
-    // Reveal New Version
-    v01Slides.forEach(function(slide) {
-      slide.style.display = '';
-    });
-  }
-}
+    // 2. If 'v=00' is in the URL, delete the new slides. 
+    // Otherwise, default to deleting the old slides.
+    if (version === '00') {
+        const newSlides = document.querySelectorAll('.v01-slide');
+        newSlides.forEach(function(slide) {
+            slide.remove(); // Physically removes the node from the DOM
+        });
+    } else {
+        const oldSlides = document.querySelectorAll('.v00-slide');
+        oldSlides.forEach(function(slide) {
+            slide.remove(); // Physically removes the node from the DOM
+        });
+    }
+});
 
 
 
