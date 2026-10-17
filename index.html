@@ -1978,9 +1978,8 @@
 
 
 
-
 <!-- ========================================== -->
-<!-- NEW VERSION (REV-01) - VISIBLE BY DEFAULT  -->
+<!-- NEW VERSION (REV-01)                       -->
 <!-- ========================================== -->
 
 <!-- Slide 1 — Cover / Main Topic -->
@@ -1991,8 +1990,8 @@
       <h1 class="huge" style="color: #1a202c; font-size: clamp(28px, 4vw, 50px); margin-bottom: 25px; line-height: 1.4;">Procedure Order for Axle Counter Reset</h1>
       <p class="sub" style="color: #4a5568; margin-bottom: 20px; font-size: 22px;"><strong>RESET OPERATION PROTOCOLS</strong></p>
       
-      <!-- TOGGLE BUTTON MOVED INSIDE THE COVER SLIDE -->
-      <button onclick="switchVersion('v00')" style="background-color: #c53030; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+      <!-- BUTTON TO LOAD OLD VERSION -->
+      <button onclick="window.location.search='?v=00'" style="background-color: #c53030; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
         View Old Version (Rev-00)
       </button>
 
@@ -2103,12 +2102,11 @@
 
 
 <!-- ========================================== -->
-<!-- OLD VERSION (REV-00) - HIDDEN BY DEFAULT   -->
-<!-- Notice style="display: none;" on EVERY section -->
+<!-- OLD VERSION (REV-00)                       -->
 <!-- ========================================== -->
 
 <!-- Slide 1 — Cover / Main Topic -->
-<section class="slide v00-slide" data-index="0" style="display: none;" data-title="SC-09 Cover (Old)" data-sidebar="SC-09: Axle Counter Reset">
+<section class="slide v00-slide" data-index="0" data-title="SC-09 Cover (Old)" data-sidebar="SC-09: Axle Counter Reset">
   <div class="frame scrollable-frame" style="background-color: #f0f4f8; max-width: 1200px; display: flex; flex-direction: column; justify-content: center; min-height: 70vh;">
     <div class="center" style="text-align: center;">
       <div class="kicker ngn-badge sc-badge" style="font-weight: 900; font-size: clamp(20px, 3vw, 32px) !important; padding: 15px 35px !important; border-radius: 8px; display: inline-block; margin-bottom: 35px; letter-spacing: 2.5px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: background 0.3s, color 0.3s;">SAFETY CIRCULAR - 09 (REV.-00)</div>
@@ -2116,7 +2114,7 @@
       <p class="sub" style="color: #4a5568; margin-bottom: 20px; font-size: 22px;"><strong>SOFT RESET OPERATION PROTOCOLS</strong></p>
       
       <!-- BUTTON TO RETURN TO NEW VERSION -->
-      <button onclick="switchVersion('v01')" style="background-color: #2b6cb0; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+      <button onclick="window.location.search='?v=01'" style="background-color: #2b6cb0; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
         Return to Current Version (Rev-01)
       </button>
 
@@ -2129,7 +2127,7 @@
 </section>
 
 <!-- Slide 2 — Requirements & Effects -->
-<section class="slide v00-slide" data-index="1" style="display: none;" data-title="Requirements & Effects (Old)">
+<section class="slide v00-slide" data-index="1" data-title="Requirements & Effects (Old)">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px;">I. Requirements & Effects of Soft Reset</h2>
     <div style="display: flex; flex-direction: column; gap: 25px;">
@@ -2161,7 +2159,7 @@
 </section>
 
 <!-- Slide 3 — TC/SC Protocol (Verification) -->
-<section class="slide v00-slide" data-index="2" style="display: none;" data-title="Protocol: Verification (Old)">
+<section class="slide v00-slide" data-index="2" data-title="Protocol: Verification (Old)">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px;">II. Roles & Responsibility: Initial Verification</h2>
     <div style="background-color: #ffffff; padding: 30px; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
@@ -2184,7 +2182,7 @@
 </section>
 
 <!-- Slide 4 — TC/SC Protocol (Execution & Sweep) -->
-<section class="slide v00-slide" data-index="3" style="display: none;" data-title="Protocol: Execution (Old)">
+<section class="slide v00-slide" data-index="3" data-title="Protocol: Execution (Old)">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px;">III. Roles & Responsibility: Command & Sweeping</h2>
     <div style="display: flex; flex-direction: column; gap: 20px;">
@@ -2210,7 +2208,7 @@
 </section>
 
 <!-- Slide 5 — Important Technical Notes -->
-<section class="slide v00-slide" data-index="4" style="display: none;" data-title="Important Notes (Old)">
+<section class="slide v00-slide" data-index="4" data-title="Important Notes (Old)">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px;">IV. Important Limitations & Failure Management</h2>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
@@ -2230,7 +2228,8 @@
   </div>
 </section>
 
-
+<!-- LINK YOUR JS FILE AT THE VERY BOTTOM -->
+<script src="toggle.js"></script>
 
 
 
