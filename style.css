@@ -144,7 +144,54 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.2;margin-bottom:26px;padding-bot
   margin-bottom:24px!important
 }
 .slide .frame h2{line-height:1.3}
+.slide .frame h2{border-bottom:3px solid var(--accent)!important}
 .slide .frame h3{font-size:clamp(18px,1.5vw,21px)!important;line-height:1.4}
+
+/* SC-10 Addendum-02 functionality table. */
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table{
+  width:100%;
+  border-collapse:collapse;
+  border:1px solid #475569;
+  background:#fff
+}
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table th,
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table td{
+  padding:10px 14px;
+  border:1px solid #64748b;
+  text-align:left;
+  vertical-align:top
+}
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table th{
+  background:var(--accent-soft);
+  color:var(--ink)
+}
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table th:nth-child(1),
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table td:nth-child(1){width:20%}
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table th:nth-child(2),
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table td:nth-child(2){width:13%}
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table th:nth-child(3),
+.slide[data-title^="SC-10 Addendum-02"] .sc10-addendum2-table td:nth-child(3){width:19%;white-space:nowrap}
+.sc10-image-figure{
+  margin:20px 0;
+  padding:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  text-align:center
+}
+.sc10-ectb-image,
+.sc10-procedure-image{
+  display:block;
+  width:100%;
+  max-height:340px;
+  margin:0 auto;
+  object-fit:contain
+}
+.sc10-image-figure figcaption{
+  margin-top:6px;
+  color:var(--ink-soft);
+  font-size:12px;
+  font-weight:600
+}
 
 /* Keep SC-22 content slides compact enough for their operation tables and panels. */
 .slide[data-title^="SC-22:"] .frame h2{
@@ -169,6 +216,41 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.2;margin-bottom:26px;padding-bot
 .slide[data-title^="SC-22:"] .frame [style*="padding: 30px"]{padding:12px!important}
 .slide[data-title^="SC-22:"] .frame > div[style*="display: flex"],
 .slide[data-title^="SC-22:"] .frame div[style*="flex-direction: column"]{gap:12px!important}
+
+/* SC-23: align numbered text cleanly and strengthen table gridlines. */
+.slide[data-title^="SC-23"] .plain-list.sc23-list li{
+  align-items:flex-start;
+  gap:16px
+}
+.slide[data-title^="SC-23"] .plain-list.sc23-list .n{
+  flex:0 0 34px;
+  width:34px;
+  text-align:right
+}
+.slide[data-title^="SC-23"] .plain-list.sc23-list li>div{
+  flex:1;
+  min-width:0
+}
+.slide[data-title^="SC-23"] .sc23-table{
+  border:1px solid #475569
+}
+.slide[data-title^="SC-23"] .sc23-table th,
+.slide[data-title^="SC-23"] .sc23-table td{
+  border:1px solid #64748b
+}
+.slide[data-title^="SC-23"] .modern-process-table.sc23-table tr{
+  border-bottom:1px solid #64748b
+}
+.slide[data-title^="SC-23"] .modern-process-table.sc23-table td{
+  text-align:left;
+  vertical-align:top
+}
+.slide[data-title^="SC-23"] .modern-process-table.sc23-table td:first-child{
+  text-align:center;
+  vertical-align:top;
+  padding-top:15px;
+  border-right:1px solid #64748b
+}
 
 @media (max-width:860px){
   :root{--rail-w:0px}

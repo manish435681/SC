@@ -6,6 +6,7 @@ if (deck) {
         const target = e.target;
         if (!(target instanceof Element) || !deck.contains(target)
             || target.closest('#mod-prompt-overlay, #lightbox') || e.ctrlKey) return;
+        if (target.closest('#sc09-comparison .comparison-table-scroll')) return;
 
         const activeSlide = deck.querySelector('.slide.active');
         if (!activeSlide) return;
@@ -22,9 +23,91 @@ if (deck) {
     }, { passive: false, capture: true });
 }
 
+// Add derived presenter labels without editing the procedure text.
+function addPresenterCues(slides) {
+    const stopWords = new Set([
+        'a', 'about', 'after', 'all', 'an', 'and', 'and/or', 'any', 'are', 'as', 'at',
+        'be', 'been', 'before', 'being', 'by', 'can', 'case', 'concerned', 'each', 'event', 'for', 'from',
+        'he', 'her', 'him', 'his', 'if', 'in', 'into', 'is', 'it', 'its',
+        'may', 'must', 'of', 'on', 'or', 'our', 'shall', 'she', 'should',
+        'nominated', 'that', 'the', 'their', 'them', 'then', 'there', 'these', 'they',
+        'this', 'those', 'to', 'was', 'we', 'were', 'when', 'where', 'which',
+        'while', 'who', 'will', 'with', 'would', 'you'
+    ]);
+
+    function cueFor(text) {
+        const trimmed = text.trim();
+        const isProhibition = /^(?:no\b|shall\s+not\b|must\s+not\b|should\s+not\b|do\s+not\b|does\s+not\b)/i.test(trimmed);
+        const words = trimmed.match(/[A-Za-z0-9]+(?:['’/-][A-Za-z0-9]+)*/g) || [];
+        const keywords = words.filter(word => !stopWords.has(word.toLowerCase())
+            && !(isProhibition && word.toLowerCase() === 'not'));
+        if (!keywords.length) return '';
+
+        const cueWords = keywords.slice(0, 2);
+        if (isProhibition && cueWords[0].toLowerCase() !== 'no') cueWords.unshift('NO');
+        return `${cueWords.join(' ').toUpperCase()}: `;
+    }
+
+    function startsWithCue(target) {
+        let first = target.firstElementChild;
+        while (first && first.matches('.n, .step-badge')) first = first.nextElementSibling;
+        return Boolean(first && first.tagName === 'STRONG' && /:\s*$/.test(first.textContent));
+    }
+
+    function addCue(target, cueOverride) {
+        if (!target || target.closest('[data-no-presenter-cue]')) return;
+        const generatedCue = target.querySelector(':scope > .presenter-cue');
+        if (generatedCue) {
+            if (cueOverride) generatedCue.textContent = `${cueOverride.trim().toUpperCase()}: `;
+            return;
+        }
+        if (startsWithCue(target)) return;
+        const cueText = cueOverride
+            ? `${cueOverride.trim().toUpperCase()}: `
+            : cueFor(target.textContent);
+        if (!cueText) return;
+
+        const cue = document.createElement('strong');
+        cue.className = 'presenter-cue';
+        cue.textContent = cueText;
+
+        const marker = target.matches('li') && target.querySelector(':scope > .n, :scope > .step-badge');
+        if (marker && marker.parentElement === target) {
+            marker.after(cue, document.createTextNode(' '));
+        } else {
+            target.prepend(cue);
+        }
+    }
+
+    slides.forEach(slide => {
+        slide.querySelectorAll('li').forEach(item => {
+            const content = [...item.children].find(child => child.tagName === 'DIV') || item;
+            addCue(content, item.dataset.presenterCue || content.dataset.presenterCue);
+        });
+
+        slide.querySelectorAll('td[data-presenter-cue]').forEach(cell => {
+            addCue(cell, cell.dataset.presenterCue);
+        });
+
+        slide.querySelectorAll('tr').forEach(row => {
+            const cells = row.querySelectorAll('td');
+            const badge = cells[0]?.querySelector('.step-badge');
+            if (!badge || !cells[1]) return;
+
+            const label = badge.textContent.trim();
+            const descriptiveLabel = label && !/^(?:step\s*\d+|case\s+[a-z]|\d+(?:\.\d+)*|[a-z]\d+)$/i.test(label);
+            if (!descriptiveLabel) {
+                const target = cells[cells.length - 1];
+                addCue(target, target.dataset.presenterCue);
+            }
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Change to 'let' so we can update them after filtering
-    let slides = document.querySelectorAll('.slide');
+    let slides = document.querySelectorAll('.slide:not([data-overlay])');
+    addPresenterCues(slides);
     let totalSlides = slides.length;
     let currentIdx = 0;
     
@@ -33,7 +116,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const railToc = document.getElementById('rail-toc');
     const progressBar = document.getElementById('progressBar');
     const menuToggle = document.getElementById('menu-toggle');
+    const sc09Comparison = document.getElementById('sc09-comparison');
+    const sc09ComparisonOpen = document.getElementById('sc09-comparison-open');
+    const sc09ComparisonClose = document.getElementById('sc09-comparison-close');
     const coverSlides = [];
+
+    function closeSc09Comparison() {
+        if (!sc09Comparison || sc09Comparison.style.display === 'none') return;
+        sc09Comparison.classList.remove('active');
+        sc09Comparison.style.display = 'none';
+        sc09Comparison.setAttribute('aria-hidden', 'true');
+        if (sc09ComparisonOpen) sc09ComparisonOpen.focus();
+    }
+
+    if (sc09Comparison && sc09ComparisonOpen && sc09ComparisonClose) {
+        sc09ComparisonOpen.addEventListener('click', () => {
+            sc09Comparison.style.display = 'flex';
+            sc09Comparison.classList.add('active');
+            sc09Comparison.setAttribute('aria-hidden', 'false');
+            sc09ComparisonClose.focus();
+        });
+
+        sc09ComparisonClose.addEventListener('click', closeSc09Comparison);
+    }
 
     // ==========================================
     // 1. Build Dynamic Sidebar Index Function (Numbers Removed)
@@ -105,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Re-calculate the remaining slides
-            slides = document.querySelectorAll('.slide');
+            slides = document.querySelectorAll('.slide:not([data-overlay])');
             totalSlides = slides.length;
             currentIdx = 0;
 
@@ -419,6 +524,14 @@ document.addEventListener('click', function (event) {
 
     // Keyboard controls (Arrow keys + 'i' toggle)
     document.addEventListener('keydown', (e) => {
+        if (sc09Comparison && sc09Comparison.style.display !== 'none') {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                closeSc09Comparison();
+            }
+            return;
+        }
+
         if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown' || e.key === 'PageDown') {
             e.preventDefault(); changeSlide(currentIdx + 1);
         } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
