@@ -16,7 +16,7 @@ html,body{margin:0;height:100%;overflow:hidden;background-color:var(--bg);color:
 body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M18 14v8M14 18h8' stroke='%231f4e8c' stroke-opacity='.13' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-size:36px 36px}
 
 #cursor-halo{position:fixed;inset:0;pointer-events:none;z-index:9999;
-  background:radial-gradient(circle 70px at var(--mouse-x,-200px) var(--mouse-y,-200px),rgba(31,78,140,.10),transparent 100%)}
+  background:radial-gradient(circle 70px at var(--mouse-x,-200px) var(--mouse-y,-200px),rgba(255,0,180,.32),rgba(255,0,180,.12) 45%,transparent 100%)}
 
 /* menu button */
 .menu-toggle{position:fixed;top:16px;left:18px;z-index:100;width:42px;height:42px;border-radius:4px;border:1px solid var(--navy);
