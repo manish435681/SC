@@ -162,7 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.addEventListener('click', () => {
                     changeSlide(index);
                     if (window.innerWidth <= 860) {
-                        document.body.classList.remove('rail-toggled');
+                        document.body.classList.remove('rail-open');
+                        menuToggle?.setAttribute('aria-expanded', 'false');
                     }
                 });
                 
@@ -368,7 +369,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            document.body.classList.toggle('rail-toggled');
+            const isOpen = document.body.classList.toggle('rail-open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
         });
     }
 
@@ -541,8 +543,9 @@ document.addEventListener('click', function (event) {
         } else if (e.key === 'End') {
             e.preventDefault(); changeSlide(totalSlides - 1);
         } else if (e.key.toLowerCase() === 'i') {
-            e.preventDefault(); 
-            document.body.classList.toggle('rail-toggled'); // Toggles the index sidebar
+            e.preventDefault();
+            const isOpen = document.body.classList.toggle('rail-open');
+            menuToggle?.setAttribute('aria-expanded', String(isOpen));
         }
     });
 

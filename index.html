@@ -10,7 +10,7 @@
 
 <div id="cursor-halo"></div>
 
-<button id="menu-toggle" class="menu-toggle" aria-label="Toggle Summary Index"><span></span><span></span><span></span></button>
+<button id="menu-toggle" class="menu-toggle" aria-label="Toggle Summary Index" aria-expanded="false"><span></span><span></span><span></span></button>
 
 <nav class="rail" id="rail" aria-label="Slide navigation">
   <div class="rail-header">
@@ -1091,60 +1091,114 @@
   </div>
 </section>
 
-<!-- Slide 9 — Action Matrices (Standard Scenarios) -->
-<section class="slide" data-index="8" data-title="Action Matrices 1">
-  <div class="frame scrollable-frame" style="max-width: 1100px;">
+<!-- Slide 9 — Action Matrices (Standard Scenarios: a-d) -->
+<section class="slide" data-index="8" data-title="Action Matrices Standard Scenarios">
+  <div class="frame scrollable-frame" style="max-width: 1300px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">VIII. Action Matrices (Standard Scenarios)</h2>
-    
-    <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-size: 14px;">
-      <tr style="background-color: #f7fafc; border-bottom: 2px solid #e2e8f0;">
-        <th style="padding: 10px; text-align: left; color: #4a5568; width: 25%;">Condition</th>
-        <th style="padding: 10px; text-align: left; color: #4a5568;">Action of TC/SC</th>
-      </tr>
-      <tr style="border-bottom: 1px solid #edf2f7;">
-        <td style="padding: 10px; color: #2d3748; font-weight: bold;">(a) At platform NSP<br>(b) Not in front of signal<br>(c) In front of Green<br>(d) In front of Violet</td>
-        <td data-presenter-cue="Verify route &amp; authorize" style="padding: 10px; color: #2d3748;">Verify CATS indications. Ensure route set, points detected set & locked. Ensure track ahead is clear. Authorize TO on exchange of private number to move in degraded mode (<span style="text-decoration: underline;">ROS</span>/<span style="text-decoration: underline;">RM</span>) up to destination platform/signal/siding.</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #edf2f7;">
-        <td style="padding: 10px; color: #c53030; font-weight: bold;">(e) Red Signal, NO points, NO Proceed Code</td>
-        <td data-presenter-cue="Protect conflicting routes" style="padding: 10px; color: #2d3748;">Same checks as above. Before authorizing a movement on 'Red/Blank' aspect, TC shall ensure that no conflicting movement has been allowed on the route & any new movement shall not be allowed till the train has cleared the section completely.</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; color: #c53030; font-weight: bold;">(f) Red Signal, NO points, Proceed Code IS available</td>
-        <td data-presenter-cue="Proceed-code available" style="padding: 10px; color: #2d3748;">Authorize movement in <span style="text-decoration: underline;">ROS</span>/<span style="text-decoration: underline;">RM</span> mode. At the next platform, TC shall instruct TO to select the ATP/ coded manual Mode to resume normal operation.</td>
-      </tr>
-    </table>
+    <div class="sc05-action-summary-wrap" tabindex="0" role="region" aria-label="Standard scenarios a to f summary">
+      <table class="sc05-action-summary">
+        <thead>
+          <tr>
+            <th scope="col">Condition</th>
+            <th scope="col">Mode of Movement</th>
+            <th scope="col">Private Number</th>
+            <th scope="col">Authorization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>(a) At Station Platform NSP</strong></td>
+            <td rowspan="6" class="sc05-shared-mode"><strong><span style="text-decoration: underline;">ROS</span> / <span style="text-decoration: underline;">RM</span></strong></td>
+            <td rowspan="6" class="sc05-shared-private-number"><strong>YES</strong></td>
+            <td>Authorize movement to the next station.</td>
+          </tr>
+          <tr>
+            <td><strong>(b) Not in Front of a Signal</strong></td>
+            <td>Authorize movement from the current point to the next platform.</td>
+          </tr>
+          <tr>
+            <td><strong>(c) In Front of Green Signal</strong></td>
+            <td>Authorize passing the Green signal in <span style="text-decoration: underline;">ROS/RM</span> mode when proceed code is unavailable.</td>
+          </tr>
+          <tr>
+            <td><strong>(d) In Front of Violet Signal</strong></td>
+            <td>Treat Violet as Danger; authorize passing it under Private Number.</td>
+          </tr>
+          <tr>
+            <td class="sc05-red-condition"><strong>(e) Red Signal, No Points En Route, No Proceed Code</strong></td>
+            <td>Authorize under Private Number; prevent conflicting movements until the train clears the section.</td>
+          </tr>
+          <tr>
+            <td class="sc05-red-condition"><strong>(f) Red Signal, No Points, Proceed Code Available</strong></td>
+            <td>Authorize movement; resume ATP / Coded Manual mode at the next platform.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
-<!-- Slide 10 — Action Matrices (Points Detected) -->
-<section class="slide" data-index="9" data-title="Action Matrices 2">
+<!-- Slide 10 — Action Matrices (Blank Signal: Point g) -->
+<section class="slide" data-index="9" data-title="Action Matrices Point G">
+  <div class="frame scrollable-frame" style="max-width: 1100px;">
+    <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">IX. Action Matrices — Blank Signal</h2>
+    <div class="sc05-action-summary-wrap" tabindex="0" role="region" aria-label="Blank signal scenario g summary">
+      <table class="sc05-action-summary sc05-action-summary-g">
+        <thead>
+          <tr>
+            <th scope="col">Condition</th>
+            <th scope="col">Mode of Movement</th>
+            <th scope="col">Private Number</th>
+            <th scope="col">Authorization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sc05-reminder-condition"><strong>(g) Blank Signal, Points Detected Set &amp; Locked, Proceed Code Available</strong></td>
+            <td><strong>Cab signal (ATP)</strong></td>
+            <td><strong>YES</strong></td>
+            <td>Authorize TO to pass the blank signal according to cab signals; advise following trains to continue in ATP.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 11 — Action Matrices (Points Detected: h-i) -->
+<section class="slide" data-index="10" data-title="Action Matrices 2">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">IX. Action Matrices (Signals with Points Enroute)</h2>
-    
-    <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-size: 14px;">
-      <tr style="background-color: #f7fafc; border-bottom: 2px solid #e2e8f0;">
-        <th style="padding: 10px; text-align: left; color: #4a5568; width: 30%;">Condition</th>
-        <th style="padding: 10px; text-align: left; color: #4a5568;">Action of TC/SC</th>
-      </tr>
-      <tr style="border-bottom: 1px solid #edf2f7;">
-        <td style="padding: 10px; color: #2d3748; font-weight: bold; text-decoration: underline;">(g) Blank signal, points detected set & locked, proceed code available</td>
-        <td data-presenter-cue="Pass blank on cab signal" style="padding: 10px; color: #2d3748;">Verify route/points set & locked. Authorize TO to pass signal at blank and proceed according to cab signal. Inform following trains about blank signal to continue in ATP.</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #edf2f7;">
-        <td style="padding: 10px; color: #c53030; font-weight: bold;">(h) Red/Blank signal, points detected set & locked, NO proceed code</td>
-        <td data-presenter-cue="Check &amp; secure points" style="padding: 10px; color: #2d3748;">Ascertain reason (axle counter failure, opposite signal out of service, route indicator LED failure). TC shall <mark style="background-color: #fed7d7; font-weight: bold; padding: 0 4px;">unblock & then block the points enroute through CATS controls</mark>. Verify execution. SC confirms status. Authorize TO under private numbers.</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; color: #c53030; font-weight: bold;">(i) Red signal, points detected set & locked, Proceed Code IS available</td>
-        <td data-presenter-cue="Move in cut-out mode" style="padding: 10px; color: #2d3748;">Authorize train movement in <mark style="background-color: #e2e8f0; font-weight: bold; padding: 0 4px;"><span style="text-decoration: underline;">cut out</span> mode</mark>. At the next platform, instruct TO to select ATP / coded manual Mode to resume normal operation.</td>
-      </tr>
-    </table>
+    <div class="sc05-action-summary-wrap" tabindex="0" role="region" aria-label="Red signal scenarios h and i summary">
+      <table class="sc05-action-summary sc05-action-summary-hi">
+        <thead>
+          <tr>
+            <th scope="col">Condition</th>
+            <th scope="col">Mode of Movement</th>
+            <th scope="col">Private Number</th>
+            <th scope="col">Authorization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sc05-reminder-condition sc05-red-condition"><strong>(h) Red/Blank Signal, Points Detected Set &amp; Locked, No Proceed Code</strong></td>
+            <td><strong><span style="text-decoration: underline;">ROS</span> / <span style="text-decoration: underline;">RM</span></strong></td>
+            <td rowspan="2" class="sc05-shared-private-number"><strong>YES</strong></td>
+            <td>Secure the route and points, confirm the track is clear, and prevent conflicting movements until the train clears the section.</td>
+          </tr>
+          <tr>
+            <td class="sc05-reminder-condition sc05-red-condition"><strong>(i) Red Signal, Points Detected Set &amp; Locked, Proceed Code Available</strong></td>
+            <td><strong><span style="text-decoration: underline;">Cut-Out</span></strong></td>
+            <td>Authorize only after following the procedure for (h). At the next platform, instruct TO to select ATP / Coded Manual mode.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
-<!-- Slide 11 — Action Matrices (Points NOT Detected) -->
-<section class="slide" data-index="10" data-title="Action Matrices 3">
+<!-- Slide 12 — Action Matrices (Points NOT Detected) -->
+<section class="slide" data-index="11" data-title="Action Matrices 3">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">X. Critical Condition: Points NOT Detected</h2>
     
@@ -1164,8 +1218,8 @@
   </div>
 </section>
 
-<!-- Slide 12 — CBTC Comm Failure Management -->
-<section class="slide" data-index="11" data-title="CBTC Failure">
+<!-- Slide 13 — CBTC Comm Failure Management -->
+<section class="slide" data-index="12" data-title="CBTC Failure">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">XI. CBTC Communication Failure Management</h2>
     
@@ -1183,8 +1237,8 @@
   </div>
 </section>
 
-<!-- Slide 13 — Manual Point Operation (MPO) - Setup -->
-<section class="slide" data-index="12" data-title="MPO - Setup">
+<!-- Slide 14 — Manual Point Operation (MPO) - Setup -->
+<section class="slide" data-index="13" data-title="MPO - Setup">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">XII. Manual Point Operation (MPO) on Line - General Rules</h2>
     
@@ -1227,8 +1281,8 @@
     </div>
 </section>
 
-<!-- Slide 14 — Manual Point Operation (MPO) - Execution & Cancel -->
-<section class="slide" data-index="13" data-title="MPO - Execution">
+<!-- Slide 15 — Manual Point Operation (MPO) - Execution & Cancel -->
+<section class="slide" data-index="14" data-title="MPO - Execution">
   <div class="frame scrollable-frame" style="max-width: 1100px;">
     <h2 style="color: #2b6cb0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">XIII. MPO - Physical Execution & Cancellation</h2>
     
